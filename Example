@@ -1,0 +1,91 @@
+-- Example script using all custom elements
+local VLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/NIcoGabrielRealYtr/Proxima-hub-library-modified/refs/heads/main/Source"))()
+local Window = VLib:Window("Proxima Hub Library", game.Name, "Modified")
+
+local MainTab = Window:Tab("All Elements")
+
+-- Original elements
+MainTab:Header("Original Elements")
+MainTab:Button("Regular Button", function()
+    print("Regular button clicked")
+end)
+
+MainTab:Toggle("Auto Farm", function(state)
+    print("Auto Farm:", state)
+end)
+
+MainTab:Slider("Speed", 16, 200, 50, function(value)
+    print("Speed:", value)
+end)
+
+MainTab:Dropdown("Weapon", {"Sword", "Axe", "Bow"}, function(selected)
+    print("Selected:", selected)
+end)
+
+MainTab:Colorpicker("ESP Color", Color3.fromRGB(255, 0, 0), function(color)
+    print("Color:", color)
+end)
+
+MainTab:Textbox("Player Name", true, function(text)
+    print("Name:", text)
+end)
+
+-- Previous custom elements
+MainTab:Separator()
+MainTab:Header("Previous Custom Elements")
+
+local myKeybind = MainTab:Keybind("Fly Key", Enum.KeyCode.F, function(key)
+    print("Fly activated with:", key)
+end)
+
+local myProgress = MainTab:ProgressBar("Loading", 0, 100, 30, function(value)
+    print("Progress:", value)
+end)
+
+MainTab:InfoBox("This is an information box with helpful tips")
+
+-- New Wind UI elements
+MainTab:Separator()
+MainTab:Header("Wind UI Elements")
+
+MainTab:Card("Premium Feature", "Unlock exclusive features", function()
+    print("Card clicked")
+end)
+
+local multiToggle = MainTab:MultiToggle("Options", {"Aimbot", "ESP", "Wallhack", "AutoClick"}, function(options)
+    print("Options:", options)
+end)
+
+MainTab:Notification("Welcome to Wind UI! Features loaded successfully.", 5)
+
+MainTab:SearchBox("Search Players", "Enter username...", function(query)
+    print("Searching for:", query)
+end)
+
+local myBadge = MainTab:Badge("Premium User", Color3.fromRGB(255, 215, 0), function()
+    print("Badge clicked")
+end)
+
+-- Custom Button
+local customBtn = MainTab:CustomButton("Launch Feature", "rbxassetid://6031075938", function()
+    print("Custom button clicked")
+end)
+
+-- Interaction examples
+MainTab:Button("Update Progress", function()
+    myProgress:SetValue(math.random(0, 100))
+end)
+
+MainTab:Button("Toggle All Options", function()
+    multiToggle:SetSelected("Aimbot", true)
+    multiToggle:SetSelected("ESP", true)
+end)
+
+MainTab:Button("Change Badge", function()
+    myBadge:SetText("VIP Member")
+    myBadge:SetColor(Color3.fromRGB(0, 255, 0))
+end)
+
+-- Final separator
+MainTab:Separator()
+MainTab:Label("All elements loaded successfully!")
